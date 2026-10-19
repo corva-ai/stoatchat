@@ -79,6 +79,7 @@ pub struct ApnsOutboundConsumer {
     #[allow(dead_code)]
     db: Database,
     client: Client,
+    topic: String,
 }
 
 impl ApnsOutboundConsumer {
@@ -148,7 +149,11 @@ impl ApnsOutboundConsumer {
         )
         .expect("could not create APN client");
 
-        Ok(ApnsOutboundConsumer { db, client })
+        Ok(ApnsOutboundConsumer {
+            db,
+            client,
+            topic: config.pushd.apn.topic.clone(),
+        })
     }
 
     async fn consume_event(
@@ -166,7 +171,7 @@ impl ApnsOutboundConsumer {
             apns_push_type: Some(PushType::Alert),
             apns_expiration: None,
             apns_priority: Some(Priority::High),
-            apns_topic: Some("chat.revolt.app"),
+            apns_topic: Some(self.topic.as_str()),
             apns_collapse_id: None,
         };
 

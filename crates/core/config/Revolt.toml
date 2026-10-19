@@ -123,6 +123,8 @@ queue = "notifications.outbound.apn"
 pkcs8 = ""
 key_id = ""
 team_id = ""
+# iOS bundle id of the app receiving the notifications
+topic = "chat.revolt.app"
 
 
 [files]
