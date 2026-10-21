@@ -193,7 +193,7 @@ sha1 = "0.10.6"
 futures-lite = "2.6.1"
 
 # Build Dependencies
-vergen = "7.5.0"
+vergen = "8.2.5"
 
 # Local packages
 revolt-coalesced = { version = "0.16.0", path = "crates/core/coalesced" }
